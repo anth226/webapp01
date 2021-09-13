@@ -1,0 +1,1339 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background:#0A0A0B;
+}
+:root{
+	--baseColor: #FF7E3E;
+	--secondaryColor: #FF9427;
+	--lightColor: #F7F8FA;
+	--whiteColor: #FFFFFF;
+	--darkColor: #0A0A0B;
+
+	--baseHeading: 'Montserrat', sans-serif;
+	--baseParagraph: 'Open Sans', sans-serif;
+}
+
+/* ========== Custom CSS Starts ========== */
+
+/* ===== CSS For "Common Cases" Starts Here ===== */
+.grid_item{
+    display: -ms-grid;
+    display: grid;
+    -ms-flex-line-pack: center;
+	align-content: center;	
+}
+/* ======================== */
+.clickable_link a{
+	color: var(--whiteColor);
+	background: -o-linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+	background: linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+	border-radius: 2px;
+	font-family: var(--baseParagraph);
+	font-weight: 700;
+	font-size: 18px;
+	display: inline-block;
+	line-height: 1;
+	padding: 20px 60px;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.clickable_link a:hover{
+	transform: scale(1.05);
+	text-decoration: none;
+	color: white;
+}
+/* ======================== */
+.heading_gradient{
+	margin-bottom: 20px;
+}
+.heading_gradient h2{
+	background: -o-linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+	background: linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+    background-clip: border-box;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	font-family: var(--baseHeading);
+	font-weight: 300;
+	font-size: 52px;
+	line-height: 1.25;
+	margin-bottom: 0px;
+}
+.heading_gradient h2 .bold_texts{
+	font-weight: 500;
+}
+.heading_gradient h3{
+	background: -o-linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+	background: linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+    background-clip: border-box;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	font-family: var(--baseHeading);
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 1.25;
+	margin-bottom: 0px;
+}
+/* ======================== */
+.heading{
+	margin-bottom: 10px;
+}
+.heading h3{
+	color: var(--lightColor);
+	font-family: var(--baseHeading);
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 1.25;
+	margin-bottom: 0px;	
+}
+.heading h2{
+	color: var(--darkColor);
+	font-family: var(--baseHeading);
+	font-weight: 300;
+	font-size: 52px;
+	line-height: 1.25;
+	margin-bottom: 0px;	
+}
+/* ======================== */
+.para_texts p{
+	color: var(--lightColor);
+	font-family: var(--baseHeading);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.6;
+	margin-bottom: 10px;
+}
+.para_texts p:last-child{
+	margin-bottom: 0px;
+}
+/* ======================== */
+/* ===== CSS For "Common Cases" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "Header" Starts Here ===== */
+.header{
+	background: url(images/header_bg.png) no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.header .particlesss{
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 0;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.header .particlesss img{
+	max-width: 100%;
+}
+.header .overlay{
+	background: url(images/header_overlay.png) no-repeat;
+	background-position: center bottom;
+	background-size: cover;
+	padding-top: 40px;
+	padding-bottom: 50px;
+	position: relative;
+	z-index: 99;
+}
+.header .container-fluid{
+	padding: 0px 75px;
+	position: relative;
+	z-index: 99;
+}
+
+.header .logo_login{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 15px 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 15px;	
+}
+.header .logo_login .logo img{
+	max-width: 150px;
+}
+.header .logo_login .login{
+	text-align: right;
+}
+.header .logo_login .login a{
+	color: var(--whiteColor);
+	font-family: var(--baseParagraph);
+	font-weight: 700;
+	font-size: 16px;
+	text-transform: uppercase; 
+	text-decoration: none;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.header .logo_login .login a:hover{
+	color: var(--baseColor);
+}
+
+.header .contents{
+	max-width: 790px;
+	margin: 0px auto;
+	margin-top: 90px;
+	text-align: center;
+}
+.header .contents h2{
+	color: var(--lightColor);
+	font-family: var(--baseHeading);
+	font-weight: 700;
+	font-size: 40px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 1.1;
+	margin-bottom: 15px;
+}
+.header .contents h2 .break{
+	display: block;
+}
+.header .contents h4{
+	color: var(--lightColor);
+	font-family: var(--baseHeading);
+	font-weight: 300;
+	font-size: 24px;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	line-height: 1.25;
+	margin-bottom: 30px;
+}
+.header .contents h4 .color{
+	color: var(--baseColor);
+}
+.header .contents p{
+	color: var(--lightColor);
+	font-family: var(--baseHeading);
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 1.5;
+	margin-bottom: 50px;
+}
+.header .contents .clickable_link{
+	margin-bottom: 50px;
+}
+.header .contents .learn_more a{
+	text-decoration: none;
+	display: inline-block;
+}
+.header .contents .learn_more h6{
+	color: var(--lightColor);
+	font-family: var(--baseParagraph);
+	font-weight: 600;
+	font-size: 16px;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+}
+/* ===== CSS For "Header" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "Video Section" Starts Here ===== */
+.video_section{
+	padding: 40px 0px;
+	background: url(images/particles_video.png) no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.video_wrap{
+	max-width: 960px;
+	margin: 0px auto;
+	position: relative;
+}
+.video_wrap .video_info{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	text-align: center;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);	
+}
+
+.video_wrap .video_info .para_texts{
+	margin-bottom: 50px;
+}
+.video_wrap .video_info .para_texts p{
+	line-height: 1.8;
+}
+
+.video_wrap .video_info .watch_now a{
+	text-decoration: none;
+	display: inline-block;
+}
+.video_wrap .video_info .watch_now img{
+	max-width: 60px;
+}
+.video_wrap .video_info .watch_now h6{
+	color: var(--lightColor);
+	font-family: var(--baseHeading);
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1;
+	margin-bottom: 0px;
+	margin-top: 15px;
+	text-transform: uppercase;
+}
+/* ===== CSS For "Video Section" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "Be Real" Starts Here ===== */
+.be_real_wrap{
+	background: #000000;
+}
+.be_real_wrap .heading_gradient{
+	position: relative;
+	z-index: 99;
+}
+.be_real_wrap .heading_gradient h2 .break{
+	display: block;
+}
+.be_real_wrap .texts{
+	position: relative;
+	z-index: 99;
+}
+.be_real_wrap .texts p{
+	color: var(--lightColor);
+	font-family: var(--baseParagraph);
+	font-weight: 600;
+	font-size: 20px;
+	max-width: 620px;
+	margin-bottom: 0px;
+}
+.be_real_wrap .para_texts{
+	max-width: 720px;
+	position: relative;
+	z-index: 99;
+}
+.be_real_wrap .para_texts p .bold_texts{
+	font-weight: 700;
+}
+
+.be_real_wrap .contents{
+	padding: 75px 0px;
+	position: relative;
+}
+.be_real_wrap .contents .inner_contents{
+	position: relative;
+	z-index: 99;	
+}
+.be_real_wrap .contents .mockup_image{
+	position: absolute;
+	max-width: 800px;
+	bottom: 0px;
+	right: 0px;
+	z-index: 0;
+}
+.be_real_wrap .contents .mockup_mobile{
+	position: absolute;
+	max-width: 800px;
+	bottom: 0px;
+	right: 0px;
+	z-index: 0;
+	display: none;
+}
+
+.be_real_wrap .contents .texts_boxes{
+	margin: 100px 0px;
+	margin-bottom: 40px;
+}
+.be_real_wrap .contents .texts_boxes .single_box{
+	background: rgba(255, 243, 219, 0.1);
+	padding: 20px 35px;
+	border-radius: 7.5px;
+	max-width: 280px;
+}
+.be_real_wrap .contents .texts_boxes .single_box p{
+	color: #FFEECD;
+	font-family: var(--baseHeading);
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 1.3;
+	text-align: center;
+	margin-bottom: 0px;	
+}
+.be_real_wrap .contents .texts_boxes .box_1{
+	position: relative;
+	left: 15px;
+	z-index: 1;
+}
+.be_real_wrap .contents .texts_boxes .box_2{
+	position: relative;
+	left: 260px;
+	top: -40px;
+	z-index: 99;
+}
+.be_real_wrap .contents .texts_boxes .box_3{
+	position: relative;
+	left: 70px;
+	top: -60px;
+	z-index: 2;
+}
+/* ===== CSS For "Be Real" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+.overlap_benefits{
+	background: url(images/white_bg.png) no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+	background-color: #000000;
+	padding: 50px 0px;
+	position: relative;
+}
+.overlap_benefits_ciners{
+	background: url(images/black_bg.png) no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+	background-color: #000000;
+}
+.overlap_benefits .particlesss{
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 0;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.overlap_benefits .particlesss img{
+	max-width: 100%;
+}
+
+/* ===== CSS For "Calling Creators" Starts Here ===== */
+.overlap_image_part{
+	position: relative;
+	z-index: 99;
+}
+.overlap_image{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 70px 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 70px;
+	margin-bottom: -100px;
+}
+.overlap_image .images .single_image{
+	max-width: 360px;
+}
+.overlap_image .images .single_image img{
+	border-radius: 10px;
+}
+.overlap_image .images .image_2{
+	position: relative;
+	top: -110px;
+	right: -180px;
+}
+
+.overlap_image .contents{
+	margin-top: 130px;
+}
+.overlap_image .contents .heading .bold_texts{
+	font-weight: 500;
+}
+.overlap_image .contents .yellow_texts p{
+	background: -o-linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+	background: linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+    background-clip: border-box;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	
+	font-family: var(--baseParagraph);
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	margin-bottom: 0px;
+}
+.overlap_image .contents .para_texts{
+	margin: 40px 0px;
+}
+.overlap_image .contents .para_texts p{
+	color: var(--darkColor);
+	line-height: 1.8;
+}
+.overlap_benefits_ciners .overlap_image .contents .para_texts p{
+	color: var(--lightColor);
+}
+.overlap_image .contents .para_texts p a{
+	text-decoration: underline;
+	color: var(--baseColor);
+}
+.overlap_image .contents .para_texts.not_a_creator{
+	margin-bottom: 0px;
+	margin-top: 25px;
+}
+/* ===== CSS For "Calling Creators" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "The Benefits" Starts Here ===== */
+.the_benefits{
+	margin-top: 100px;
+	padding-bottom: 125px;
+	position: relative;
+	z-index: 99;
+}
+.the_benefits .heading{
+	text-align: center;
+}
+.the_benefits .heading_gradient{
+	text-align: center;
+}
+.the_benefits .heading .bold_texts{
+	font-weight: 500;
+}
+.the_benefits .para_texts{
+	max-width: 660px;
+	margin: 0px auto;
+	text-align: center;
+}
+.the_benefits .para_texts p{
+	color: var(--darkColor);
+	line-height: 1.8;
+}
+.the_benefits_ciners .para_texts p{
+	color: var(--lightColor);
+}
+.the_benefits .para_texts p .color{
+	color: var(--baseColor);
+	font-weight: 600;
+}
+
+.benefits{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 50px 1fr 50px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 50px;
+
+	max-width: 860px;
+	margin: 0px auto;
+	margin-top: 50px;
+}
+.benefits .single_benefit{
+	text-align: center;
+}
+.benefits .single_benefit .texts h5{
+	color: var(--baseColor);
+	font-family: var(--baseHeading);
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 100%;
+	text-transform: uppercase;
+	margin: 15px 0px;
+}
+.benefits .single_benefit .texts p{
+	color: var(--darkColor);
+	font-family: var(--baseParagraph);
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1.4;
+	margin-bottom: 0px;
+}
+.benefits .single_benefit .texts p .color{
+	color: var(--baseColor);	
+}
+.the_benefits_ciners .single_benefit .texts p{
+	color: var(--lightColor);
+}
+/* ===== CSS For "The Benefits" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "How It Works" Starts Here ===== */
+.how_it_works{
+	padding-top: 40px;
+	padding-bottom: 100px;
+	background: url(images/particles_how_it_works.png) no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-color: #000000;
+}
+.how_it_works .heading_gradient{
+	text-align: center;
+	margin-bottom: 10px;
+}
+.how_it_works .heading_gradient .bold_texts{
+	font-weight: 500;
+}
+.how_it_works .para_texts{
+	margin-bottom: 50px;
+	text-align: center;
+}
+.how_it_works .steps{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 60px 1fr 60px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 60px;	
+}
+.how_it_works .steps .single_step{
+	padding: 30px 35px;
+	background: #18181A;
+	border-radius: 10px;
+	text-align: center;
+	border: 1px solid #18181A;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.how_it_works .steps .single_step:hover{
+	cursor: pointer;
+	border: 1px solid #FFC187;
+	box-shadow: 0px 0px 100px rgba(235, 187, 142, 0.5);	
+}
+.how_it_works .steps .single_step .image{
+	margin-bottom: 40px;
+}
+.how_it_works .steps .single_step .texts h5{
+	background: -o-linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+	background: linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+    background-clip: border-box;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	font-family: var(--baseHeading);
+	font-weight: 500;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 15px;
+}
+.how_it_works .steps .single_step .texts p{
+	color: var(--lightColor);
+	font-family: var(--baseParagraph);
+	font-weight: 400;
+	font-size: 16px;
+	margin-bottom: 0px;
+	max-width: 180px;
+	line-height: 1.6;
+	margin: 0px auto;
+}
+
+.how_it_works .clickable_link{
+	text-align: center;
+	margin-top: 60px;
+}
+/* ===== CSS For "How It Works" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "Sign Up" Starts Here ===== */
+.set_account_wrap{
+	background: url(images/sign_up_bg.png) no-repeat;
+	
+	background-position: center center;
+	background-size: 100% 100%;
+	padding: 130px 0px;
+	padding-top: 0px;
+	overflow: hidden;
+	position: relative;
+}
+.set_account_wrap .particlesss{
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 0;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.set_account_wrap .particlesss img{
+	max-width: 100%;
+}
+
+.set_account{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 100px 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 100px;
+}
+.set_account .texts{
+	padding: 0px 25px;
+	padding-left: 100px;
+	margin-top: 130px;
+}
+.set_account .texts h6{
+	color: var(--whiteColor);
+	font-family: var(--baseParagraph);
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 1;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+.set_account .heading h2{
+	color: var(--whiteColor);
+	line-height: 1;
+	letter-spacing: 1px;
+}
+.set_account .para_texts{
+	margin-top: 35px;
+}
+.set_account .para_texts p{
+	line-height: 1.8;
+}
+
+.set_account .sign_up_methods{
+	background: var(--whiteColor);
+	padding: 40px 35px;
+	border: 1px solid var(--whiteColor);
+	padding-bottom: 35px;
+	border-radius: 10px;
+	position: relative;
+	bottom: -130px;
+}
+.set_account_ciners .sign_up_methods{
+	background: #18181A;
+	border: 1px solid rgba(255, 193, 135, 0.5);
+}
+.set_account .form-group{
+	margin-bottom: 15px;
+}
+.set_account .form-control{
+	color: var(--darkColor);
+	border: 1px solid #F6F7FA;
+	background: #F6F7FA;
+	border-radius: 2px;
+	padding: 12px 15px;
+	font-family: var(--baseHeading);
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.5;
+	height: inherit;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.set_account .form-control::placeholder{
+	color: #9D9FA0;
+	opacity: 1;
+}
+.set_account_ciners .form-control{
+	color: var(--lightColor);
+	background: #282828;
+	border: 1px solid #282828;
+}
+.set_account_ciners .form-control::placeholder{
+	color: #9D9FA0;
+	opacity: 1;
+}
+.set_account .form-control:active,
+.set_account .form-control:focus{
+	box-shadow: none;
+	border: 1px solid var(--secondaryColor);
+}
+.set_account .input_icon{
+	position: relative;
+}
+.set_account .input_icon .form-control{
+	padding-right: 45px;
+}
+.set_account .input_icon i{
+	color: #9D9FA0;
+	font-size: 20px;
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translate(-0%, -50%);
+}
+.set_account_ciners .input_icon i{
+	color: #9D9FA0;
+}
+.set_account .submit_button button{
+	color: var(--whiteColor);
+	background: -o-linear-gradient(113.71deg, #FF9426 17.83%, #FFC081 95.64%);
+	background: linear-gradient(113.71deg, #FF9426 17.83%, #FFC081 95.64%);
+	border-radius: 2px;
+	font-family: var(--baseParagraph);
+	font-weight: 700;
+	font-size: 18px;
+	width: 100%;
+	padding: 11.5px 20px;
+	border: none;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.set_account .submit_button button:active,
+.set_account .submit_button button:focus{
+	box-shadow: none;
+}
+.set_account .submit_button button:hover{
+	-webkit-transform: scale(1.025);
+	-ms-transform: scale(1.025);
+	transform: scale(1.025);
+}
+
+.set_account .or{
+	border-top: 1px solid #CFD1DF;
+	text-align: center;
+	margin: 35px 0px;
+	margin-bottom: 5px;
+}
+.set_account_ciners .or{
+	border-top: 1px solid #858791;
+}
+.set_account .or h6{
+	color: #8C8C8C;
+	background: var(--whiteColor);
+	font-family: var(--baseHeading);
+	font-weight: 500;
+	font-size: 16px;
+	margin-bottom: 0px;
+	display: inline-block;
+	padding: 5px 20px;
+	position: relative;
+	top: -16px;
+}
+.set_account_ciners .or h6{
+	background: #18181A;
+	color: #8C8C8C;
+}
+.set_account .alter_login{
+	margin-bottom: 20px;
+}
+.set_account .alter_login ul{
+	margin-bottom: 0px;
+}
+.set_account .alter_login ul li{
+	list-style: none;
+	margin-bottom: 15px;
+}
+.set_account .alter_login ul li:last-child{
+	margin-bottom: 0px;
+}
+.set_account .alter_login ul li a{
+	text-decoration: none;
+	border-radius: 2px;
+	color: var(--whiteColor);
+	font-family: var(--baseParagraph);
+	font-weight: 700;
+	font-size: 18px;
+	width: 100%;
+	padding: 10.5px 20px;
+	text-align: center;
+	display: block;
+	text-transform: uppercase;
+	background: var(--baseColor);
+	border: 1px solid var(--baseColor);
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.set_account .alter_login ul li a:hover{
+	-webkit-transform: scale(1.025);
+	-ms-transform: scale(1.025);
+	transform: scale(1.025);
+}
+.set_account .alter_login ul li a i{
+	margin-right: 10px;
+	position: relative;
+	top: -1px;
+}
+.set_account .alter_login ul li.facebook a{
+	background: #0082CD;
+	border: 1px solid #0082CD;
+}
+.set_account .alter_login ul li.google a{
+	color: var(--darkColor);
+	background: #F6F7FA;
+	border: 1px solid #F2F2F4;
+}
+.set_account .alter_login ul li.google a img{
+	max-width: 19px;
+	margin-right: 10px;
+	position: relative;
+	top: -1px;
+}
+.set_account .alter_login ul li.twitter a{
+	background: #1DA1F2;
+	border: 1px solid #0394EC;
+}
+.set_account_ciners .alter_login ul li.google a{
+	background: #FF3D00;
+	border: 1px solid #E91600;
+	color: var(--lightColor);
+}	
+
+.set_account .alert_texts p{
+	color: #8C8C8C;
+	font-family: var(--baseParagraph);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.4;
+	margin-bottom: 0px;
+	text-align: center;
+}
+.set_account .alert_texts p a{
+	color: #0082CD;
+	font-weight: 600;
+}
+.set_account_ciners .alert_texts p{
+	color: var(--lightColor);
+}
+.set_account_ciners .alert_texts p a{
+	color: var(--lightColor);
+}
+
+.sign_up_wrap{
+	position: relative;
+}
+.sign_up_wrap .confirmation_box{
+	width: 505px;
+	min-height: 637px;
+	background: #131313;
+	border: 1px solid #8C6D51;
+	border-radius: 10px;
+	padding: 25px 75px;
+
+    display: -ms-grid;
+    display: grid;
+    -ms-flex-line-pack: center;
+    align-content: center;
+
+	position: absolute;
+	top: 130px;
+	right: -100%;
+	visibility: hidden;
+
+	-webkit-transition: all 0.3s ease-in;
+	-moz-transition: all 0.3s ease-in;
+	transition: all 0.3s ease-in;	
+}
+.sign_up_wrap .confirmation_box.show{
+	right: 0px;
+	visibility: visible;
+}
+.sign_up_wrap .confirmation_box .heading h2{
+	color: var(--lightColor);
+	margin-bottom: 75px;
+}
+.sign_up_wrap .confirmation_box .heading h2 .break{
+	display: block;
+}
+.sign_up_wrap .confirmation_box .para_texts{
+	margin-bottom: 60px;
+}
+.sign_up_wrap .confirmation_box .para_texts:last-child{
+	margin-bottom: 0px;
+}
+.sign_up_wrap .confirmation_box .para_texts p a{
+	color: #FFD2AF;
+}
+
+.sign_up_wrap .type_form{
+	width: 100%;
+	min-height: 637px;
+	background: #131313;
+	border-radius: 10px;
+	padding: 20px;
+
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+
+	position: absolute;
+	top: 130px;
+	left: 100%;
+	right: 0px;
+	visibility: hidden;
+
+	-webkit-transition: all 0.3s ease-in;
+	-moz-transition: all 0.3s ease-in;
+	transition: all 0.3s ease-in;
+}
+.sign_up_wrap .type_form.show{
+	left: 0px;
+	visibility: visible;
+}
+/* ===== CSS For "Sign Up" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "Faq's" Starts Here ===== */
+.faqs_wrap{
+	background: url(images/particles_sign_up.png) no-repeat;
+	background-position: center center;
+}
+.faqs{
+	padding-top: 75px;
+	max-width: 1050px;
+	margin: 0px auto;
+}
+.faqs .heading_gradient{
+	margin-bottom: 35px;
+}
+.faqs .heading_gradient .bold_texts{
+	font-weight: 500;
+}
+.faqs .single_item {
+	margin-bottom: 2px;
+}
+.faqs .single_item .click_item a{
+	color: var(--lightColor);
+	font-family: var(--baseParagraph);
+	font-weight: 700;
+	font-size: 18px;
+	display: block;
+	text-decoration: none;
+	text-transform: capitalize;
+	background: #2A2A2A;
+	border: 1px solid #383838;
+	border-radius: 4px;	
+	padding: 25px 30px;
+	position: relative;
+	padding-right: 20px;
+	
+}
+.faqs .single_item .click_item a:after{
+	content:"\f068";
+	font-family: "Font Awesome 5 Free";
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--lightColor);
+	position:absolute;
+	right: 30px;
+	top: 50%;
+	transform: translate(0px, -50%);	
+}
+.faqs .single_item .click_item a.collapsed:after{
+	content:"\f067";
+	font-family: "Font Awesome 5 Free";
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--lightColor);
+	position:absolute;
+	right: 30px;
+	top: 50%;
+	transform: translate(0px, -50%);
+}
+.faqs .single_item .click_item a.collapsed{
+	background: #2A2A2A;
+	border: 1px solid #383838;
+	border-radius: 4px;
+}
+.faqs .single_item .click_item a{
+	background: #FFA548;
+	border: 1px solid #FFA548;
+	border-radius: 4px 4px 0px 0px;
+}
+.faqs .contents{
+	padding: 25px 30px;
+	padding-top: 0px;
+	background: #FFA548;
+	border-radius: 0px 0px 4px 4px;
+	transition: none;
+}
+.faqs .contents p{
+	color: var(--lightColor);
+	font-family: var(--baseParagraph);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.8;
+	margin-bottom: 10px;
+}
+.faqs .contents p:last-child{
+	margin-bottom: 0px;
+}
+.faqs .contents p span{
+	font-weight:700;
+}
+.faqs .contents p a{
+	color:#78B13B;
+	font-weight:700;
+	text-transform:capitalize;
+}
+.faqs .contents .image{
+	padding: 15px 25px;
+}
+/* ===== CSS For "Faq's" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "Interested In" Starts Here ===== */
+.interested_in_wrap{
+	padding: 120px 0px;
+	background: url(images/particles_subscribe.png) no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.interested_in{
+	max-width: 860px;
+	margin: 0px auto;
+
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 10px 280px;
+    grid-template-columns: 1fr 280px;
+    grid-auto-rows: auto;
+    gap: 10px;	
+}
+.interested_in .heading{
+	margin-bottom: 0px;
+}
+.interested_in .heading h3{
+	font-weight: 600;
+}
+.interested_in .clickable_link a{
+	display: block;
+	width: 100%;
+}
+/* ===== CSS For "Interested In" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "Footer" Starts Here ===== */
+.footer_wrap{
+	border-top: 1px solid #201E1E;
+}
+.footer{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 0px 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 0px;	
+}
+.footer .single_part:first-child{
+	border-right: 1px solid #201E1E;
+}
+.footer .single_part:last-child{
+	padding-left: 40px;
+}
+.footer .footer_contents{
+	padding-top: 30px;
+	padding: 40px 0px;
+	max-width: 380px;
+}
+.footer .footer_contents h4{
+	background: -o-linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+	background: linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+    background-clip: border-box;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	
+	font-family: var(--baseHeading);
+	font-weight: 400;
+	font-size: 28px;
+	line-height: 1.5;
+	margin-bottom: 10px;
+}
+.footer .footer_contents p{
+	color: var(--lightColor);
+	font-family: var(--baseParagraph);
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.5;
+	margin-bottom: 15px;	
+}
+.footer .subscrip_form{
+	position: relative;
+}
+.footer .subscrip_form .form-control{
+	color: var(--lightColor);
+	border: 1px solid #20201F;
+	background: #20201F;
+	border-radius: 2px;
+	padding: 12px 15px;
+	padding-right: 60px;
+	font-family: var(--baseHeading);
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.5;
+	height: inherit;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.footer .subscrip_form .form-control::placeholder{
+	color: #A8AAB4;
+	opacity: 1;
+}
+.footer .subscrip_form .form-control:active,
+.footer .subscrip_form .form-control:focus{
+	box-shadow: none;
+	border: 1px solid var(--secondaryColor);
+}
+.footer .subscrip_form button{
+	position: absolute;
+	right: 0px;
+	top: 3px;
+}
+.footer .subscrip_form button:active,
+.footer .subscrip_form button:focus{
+	box-shadow: none;
+}
+.footer .copyright{
+	margin-top: 50px;
+}
+.footer .copyright_mobile{
+	display: none;
+}
+.footer .copyright p{
+	background: -o-linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+	background: linear-gradient(88.87deg, #FFC450 -50.01%, #FF7E3E 101.47%), #FF7E3E;
+    background-clip: border-box;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	font-family: var(--baseParagraph);
+	font-weight: 600;
+	font-size: 14px;
+	margin-bottom: 0px;
+}
+
+.footer .texts ul{
+	margin-bottom: 0px;
+}
+.footer .texts ul li{
+	list-style: none;
+	color: var(--lightColor);
+	font-family: var(--baseParagraph);
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.5;
+	margin-bottom: 7.5px;
+}
+.footer .texts ul li a{
+	color: var(--secondaryColor);
+	text-decoration: underline;
+}
+.footer .texts ul li:last-child{
+	margin-bottom: 0px;
+}
+.footer .social_links{
+	margin-top: 55px;
+}
+.footer .social_links ul{
+	margin-bottom: 0px;
+}
+.footer .social_links ul li{
+	list-style: none;
+	margin-right: 20px;
+	display: inline-block;
+}
+.footer .social_links ul li:last-child{
+	margin-right: 0px;
+}
+.footer .social_links ul li i{
+	color: var(--lightColor);
+	font-size: 20px;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.footer .social_links ul li i:hover{
+	color: var(--baseColor);
+}
+/* ===== CSS For "Footer" Ends Here ===== */
+
+
+.bottom_button{
+	position: fixed;
+	bottom: -100%;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	z-index: 999;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	background: var(--lightColor);
+}
+.bottom_button .clickable_link a{
+	display: block;
+	width: 100%;
+	padding: 17.5px 15px;
+}
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+/* ===== CSS For "" Starts Here ===== */
+/* ===== CSS For "" Ends Here ===== */
+
+
+/* ============================== */
+/* ============================== */
+/* ============================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
