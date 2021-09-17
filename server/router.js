@@ -7,6 +7,7 @@ const NotificationController = require("./controllers/notification");
 const ReportController = require("./controllers/report");
 const FaqController = require("./controllers/faq");
 const AdminController = require("./controllers/admin");
+const TypeformController = require("./controllers/typeform");
 
 const express = require("express");
 const passport = require("passport");
@@ -28,7 +29,8 @@ module.exports = function (app) {
     reportRoutes = express.Router(),
     faqRoutes = express.Router(),
     adminRoutes = express.Router(),
-    fieldDataRoutes = express.Router();
+    fieldDataRoutes = express.Router(),
+    typeformRoutes = express.Router();
 
   //= ========================
   // Auth Routes
@@ -286,6 +288,12 @@ module.exports = function (app) {
   faqRoutes.put("/bulk/list", requireAuth, FaqController.bulkUpdateFaq);
   // delete faq route
   faqRoutes.delete("/:id", requireAuth, FaqController.deleteFaq);
+
+  //= ========================
+  // Typeform Routes
+  //= ========================
+  apiRoutes.use("/typeform", typeformRoutes);
+  typeformRoutes.get("/submit-film", TypeformController.submitFilm);
 
   // Set url for API group routes
   app.use("/api", apiRoutes);
