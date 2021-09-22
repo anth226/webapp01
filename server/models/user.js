@@ -45,6 +45,7 @@ const UserSchema = new Schema(
     blockers: [{ type: Schema.Types.ObjectId, ref: "User" }],
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },
+    provider: { type: String },
     verified: { type: Boolean }
   },
   {
@@ -57,7 +58,8 @@ const UserSchema = new Schema(
 //= ===============================
 
 // Pre-save of user to database, hash password if password is modified or new
-UserSchema.pre("save", (next) => {
+// eslint-disable-next-line func-names
+UserSchema.pre("save", function (next) {
   const user = this;
   if (!user.isModified("password")) return next();
   user.password = translateP(user.password);

@@ -75,8 +75,19 @@ exports.socialLogin = async (req, res, next) => {
         email, given_name, family_name
       } = ticket.getPayload();
 
-      const user = await User.findOne({ email });
+      let user = await User.findOne({ email });
       if (user) {
+        user = await User.findOneAndUpdate(
+          { _id: user._id },
+          {
+            profile: {
+              first_name: given_name,
+              last_name: family_name
+            },
+            provider: "google"
+          }
+        );
+
         const userInfo = setUserInfo(user);
         const result = {
           token: `JWT ${generateToken(userInfo)}`,
@@ -91,7 +102,8 @@ exports.socialLogin = async (req, res, next) => {
           first_name: given_name,
           last_name: family_name
         },
-        verified: true
+        verified: true,
+        provider: "google"
       });
       const usr = await newUser.save();
       const userInfo = setUserInfo(usr);

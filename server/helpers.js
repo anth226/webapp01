@@ -13,6 +13,7 @@ exports.setUserInfo = function setUserInfo(request) {
     role: request.role,
     verified: request.verified,
     blockers: request.blockers,
+    provider: request.provider
   };
 };
 
