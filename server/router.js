@@ -1,3 +1,5 @@
+const express = require("express");
+const passport = require("passport");
 const AuthenticationController = require("./controllers/authentication");
 const UserController = require("./controllers/user");
 const ChatController = require("./controllers/chat");
@@ -9,28 +11,26 @@ const FaqController = require("./controllers/faq");
 const AdminController = require("./controllers/admin");
 const TypeformController = require("./controllers/typeform");
 
-const express = require("express");
-const passport = require("passport");
-const ROLE_ADMIN = require("./constants").ROLE_ADMIN;
+const { ROLE_ADMIN } = require("./constants");
 
-const passportService = require("./config/passport");
+// const passportService = require("./config/passport");
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate("jwt", { session: false });
 
 module.exports = function (app) {
   // Initializing route groups
-  const apiRoutes = express.Router(),
-    authRoutes = express.Router(),
-    userRoutes = express.Router(),
-    chatRoutes = express.Router(),
-    commentRoutes = express.Router(),
-    notificationRoutes = express.Router(),
-    reportRoutes = express.Router(),
-    faqRoutes = express.Router(),
-    adminRoutes = express.Router(),
-    fieldDataRoutes = express.Router(),
-    typeformRoutes = express.Router();
+  const apiRoutes = express.Router();
+  const authRoutes = express.Router();
+  const userRoutes = express.Router();
+  const chatRoutes = express.Router();
+  const commentRoutes = express.Router();
+  const notificationRoutes = express.Router();
+  const reportRoutes = express.Router();
+  const faqRoutes = express.Router();
+  const adminRoutes = express.Router();
+  const fieldDataRoutes = express.Router();
+  const typeformRoutes = express.Router();
 
   //= ========================
   // Auth Routes
@@ -43,6 +43,8 @@ module.exports = function (app) {
   );
   // Login route
   authRoutes.post("/login", AuthenticationController.login);
+  // Login route by social
+  authRoutes.post("/login/social/:provider", AuthenticationController.socialLogin);
   // Password reset request route (generate/send token)
   authRoutes.post("/forgot-password", AuthenticationController.forgotPassword);
   // Password reset route (change password using token)

@@ -12,6 +12,6 @@
     "comma-dangle": ["error", {
       "functions": "ignore"
     }],
-    "quotes": ["ignore", "double"]
+    "quotes": [2, "double", { "avoidEscape": true }]
   }
 }

@@ -1,10 +1,11 @@
 // Importing Node packages required for schema
 const mongoose = require("mongoose");
-const ROLE_MEMBER = require("../constants").ROLE_MEMBER;
-const ROLE_BLOCK = require("../constants").ROLE_BLOCK;
-const ROLE_ADMIN = require("../constants").ROLE_ADMIN;
-const Schema = mongoose.Schema;
-const translateP = require("../helpers").translateP;
+const { ROLE_MEMBER } = require("../constants");
+const { ROLE_BLOCK } = require("../constants");
+const { ROLE_ADMIN } = require("../constants");
+
+const { Schema } = mongoose;
+const { translateP } = require("../helpers");
 
 //= ===============================
 // User Schema
@@ -15,11 +16,10 @@ const UserSchema = new Schema(
       type: String,
       lowercase: true,
       unique: true,
-      required: true,
+      required: true
     },
     password: {
-      type: String,
-      required: true,
+      type: String
     },
     profile: {
       first_name: { type: String, required: true },
@@ -35,20 +35,20 @@ const UserSchema = new Schema(
       web: { type: String },
       tags: [{ type: Schema.Types.ObjectId, ref: "FieldData" }],
       contact: { type: String },
-      position: { type: String },
+      position: { type: String }
     },
     role: {
       type: String,
       enum: [ROLE_MEMBER, ROLE_BLOCK, ROLE_ADMIN],
-      default: ROLE_MEMBER,
+      default: ROLE_MEMBER
     },
     blockers: [{ type: Schema.Types.ObjectId, ref: "User" }],
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date },
-    verified: { type: Boolean },
+    verified: { type: Boolean }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
@@ -57,17 +57,17 @@ const UserSchema = new Schema(
 //= ===============================
 
 // Pre-save of user to database, hash password if password is modified or new
-UserSchema.pre("save", function (next) {
+UserSchema.pre("save", (next) => {
   const user = this;
   if (!user.isModified("password")) return next();
   user.password = translateP(user.password);
-  next();
+  return next();
 });
 
 // Method to compare password for login
-UserSchema.methods.comparePassword = function (candidatePassword, cb) {
-  let cp = translateP(candidatePassword);
-  let isMatch = cp === this.password;
+UserSchema.methods.comparePassword = (candidatePassword, cb) => {
+  const cp = translateP(candidatePassword);
+  const isMatch = cp === this.password;
   cb(null, isMatch);
 };
 

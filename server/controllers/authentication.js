@@ -1,17 +1,20 @@
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const { OAuth2Client } = require("google-auth-library");
 const User = require("../models/user");
 const sendgrid = require("../config/sendgrid");
-const setUserInfo = require("../helpers").setUserInfo;
-const getRole = require("../helpers").getRole;
+const { setUserInfo } = require("../helpers");
+const { getRole } = require("../helpers");
 const Token = require("../models/token");
 require("dotenv/config");
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Generate JWT
 // TO-DO Add issuer and audience
 function generateToken(user) {
   return jwt.sign(user, process.env.JWT_SECRET, {
-    expiresIn: 604800, // in seconds
+    expiresIn: 604800 // in seconds
   });
 }
 
@@ -19,10 +22,10 @@ function generateToken(user) {
 // Login Route
 //= =======================================
 exports.login = async (req, res, next) => {
-  const email = req.body.email;
-  const password = req.body.password;
+  const { email } = req.body;
+  const { password } = req.body;
   try {
-    let user = await User.findOne({ email })
+    const user = await User.findOne({ email })
       .populate("profile.org")
       .populate("profile.location");
     if (!user) {
@@ -43,12 +46,63 @@ exports.login = async (req, res, next) => {
           .status(422)
           .send({ error: "Your account is not authorized" });
       }
-      let result = {
+      const result = {
         token: `JWT ${generateToken(userInfo)}`,
-        user: userInfo,
+        user: userInfo
       };
       return res.status(200).json(result);
     });
+
+    return res.status(401).json({ error: "No user with the email" });
+  } catch (err) {
+    return next(err);
+  }
+};
+
+//= =======================================
+// Social Login Route
+//= =======================================
+exports.socialLogin = async (req, res, next) => {
+  const { token } = req.body;
+  try {
+    if (req.params.provider === "google") {
+      const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: process.env.GOOGLE_CLIENT_ID
+      });
+      const {
+        // eslint-disable-next-line camelcase,no-unused-vars
+        email, given_name, family_name
+      } = ticket.getPayload();
+
+      const user = await User.findOne({ email });
+      if (user) {
+        const userInfo = setUserInfo(user);
+        const result = {
+          token: `JWT ${generateToken(userInfo)}`,
+          user: userInfo
+        };
+        return res.status(200).json(result);
+      }
+
+      const newUser = new User({
+        email,
+        profile: {
+          first_name: given_name,
+          last_name: family_name
+        },
+        verified: true
+      });
+      const usr = await newUser.save();
+      const userInfo = setUserInfo(usr);
+      const result = {
+        token: `JWT ${generateToken(userInfo)}`,
+        user: userInfo
+      };
+      return res.status(200).json(result);
+    }
+
+    return res.status(400).json({ error: "No matched social provider" });
   } catch (err) {
     return next(err);
   }
@@ -58,13 +112,15 @@ exports.login = async (req, res, next) => {
 // Registration Route
 //= =======================================
 exports.participantRegister = async function (req, res, next) {
-  const email = req.body.email;
-  const first_name = req.body.first_name;
-  const last_name = req.body.last_name;
-  const password = req.body.password;
+  const { email } = req.body;
+  // eslint-disable-next-line camelcase
+  const { first_name } = req.body;
+  // eslint-disable-next-line camelcase
+  const { last_name } = req.body;
+  const { password } = req.body;
 
   try {
-    let users = await User.find({ email });
+    const users = await User.find({ email });
     if (users.length > 0) {
       return res
         .status(422)
@@ -75,19 +131,19 @@ exports.participantRegister = async function (req, res, next) {
       password,
       profile: {
         first_name,
-        last_name,
-      },
+        last_name
+      }
     });
     const usr = await user.save();
     const userInfo = setUserInfo(usr);
     const token = new Token({
       _userId: userInfo._id,
-      token: crypto.randomBytes(16).toString("hex"),
+      token: crypto.randomBytes(16).toString("hex")
     });
     token.save();
     sendgrid.userEmailVerification(
       userInfo.email,
-      `${userInfo.profile.first_name} ${userInfo.profile.last_name} `,
+      `${userInfo.profile.firstName} ${userInfo.profile.lastName} `,
       token.token
     );
     return res.status(201).json({ user: userInfo });
@@ -101,28 +157,26 @@ exports.confirmEmail = async (req, res, next) => {
   try {
     const t = await Token.findOne({ token });
     if (!t) {
-      res.status(201).json({
-        message: "Invalid token for email verification",
+      return res.status(201).json({
+        message: "Invalid token for email verification"
       });
-      return;
     }
-    let result = await User.findById(t._userId);
+    // eslint-disable-next-line no-underscore-dangle
+    const result = await User.findById(t._userId);
     if (!result) {
-      res.status(201).json({
-        message: "Invalid token for email verification",
+      return res.status(201).json({
+        message: "Invalid token for email verification"
       });
-      return;
     }
     if (result.verified) {
-      res.status(201).json({
-        message: "The account has already been verified",
+      return res.status(201).json({
+        message: "The account has already been verified"
       });
-      return;
     }
     result.verified = true;
     result.save();
-    res.status(201).json({
-      message: "The account has been verified successfully",
+    return res.status(201).json({
+      message: "The account has been verified successfully"
     });
   } catch (err) {
     return next(err);
@@ -136,7 +190,7 @@ exports.confirmEmail = async (req, res, next) => {
 // Role authorization check
 exports.roleAuthorization = function (requiredRole) {
   return function (req, res, next) {
-    const user = req.user;
+    const { user } = req;
 
     User.findById(user._id, (err, foundUser) => {
       if (err) {
@@ -161,23 +215,23 @@ exports.roleAuthorization = function (requiredRole) {
 //= =======================================
 
 exports.forgotPassword = async (req, res, next) => {
-  const email = req.body.email;
+  const { email } = req.body;
   try {
-    let user = await User.findOne({ email });
+    const user = await User.findOne({ email });
     if (user) {
       let token = new Token({
         _userId: user._id,
-        token: crypto.randomBytes(16).toString("hex"),
+        token: crypto.randomBytes(16).toString("hex")
       });
       token = await token.save();
       sendgrid.userForgotPasword(email, token.token);
       return res.status(200).json({
-        message: "Please check your email for the link to reset your password.",
+        message: "Please check your email for the link to reset your password."
       });
     }
     return res.status(422).json({
       error:
-        "Your request could not be processed with the email. Please try again.",
+        "Your request could not be processed with the email. Please try again."
     });
   } catch (err) {
     return next(err);
@@ -193,36 +247,39 @@ exports.verifyToken = function (req, res, next) {
     if (err || !token) {
       return res.status(422).json({
         error:
-          "Your token has expired. Please attempt to reset your password again.",
+          "Your token has expired. Please attempt to reset your password again."
       });
     }
-    User.findById(token._userId, (err, user) => {
-      if (err) {
-        return next(err);
+    // eslint-disable-next-line no-underscore-dangle
+    User.findById(token._userId, (findErr, user) => {
+      if (findErr) {
+        return next(findErr);
       }
+      // eslint-disable-next-line no-param-reassign
       user.password = req.body.password;
-      user.save((err) => {
-        if (err) {
-          return next(err);
-        } else {
-          return res.status(200).json({
-            message:
-              "Password changed successfully. Please login with your new password.",
-          });
+      user.save((saveErr) => {
+        if (saveErr) {
+          return next(saveErr);
         }
+        return res.status(200).json({
+          message:
+              "Password changed successfully. Please login with your new password."
+        });
       });
+
+      return next();
     });
   });
 };
 
 exports.resetPasswordSecurity = async (req, res, next) => {
   try {
-    let user = await User.findById(req.body.userid);
+    const user = await User.findById(req.body.userid);
     user.password = req.body.password;
     await user.save();
     return res.status(200).json({
       message:
-        "Password changed successfully. Please login with your new password.",
+        "Password changed successfully. Please login with your new password."
     });
   } catch (err) {
     return next(err);
@@ -231,14 +288,18 @@ exports.resetPasswordSecurity = async (req, res, next) => {
 
 exports.resendVerification = function (req, res, next) {
   const { _id, email, name } = req.body;
-  var token = new Token({
+  const token = new Token({
     _userId: _id,
-    token: crypto.randomBytes(16).toString("hex"),
+    token: crypto.randomBytes(16).toString("hex")
   });
-  token.save(function (err) {
+  token.save((err) => {
     if (err) {
       return res.status(500).send({ error: err.message });
     }
     sendgrid.userEmailVerification(email, name, token.token);
+
+    return res.status(200);
   });
+
+  return next();
 };
